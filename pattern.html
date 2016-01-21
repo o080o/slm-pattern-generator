@@ -42,6 +42,7 @@ jsFloat32Array = function(table){
 	<script type="text/javascript">
 	var canvas = document.getElementById("Canvas");
 	canvas:addEventListener("resize", function() {
+	console.log("resize fired!");
 	L.execute('gl.resize()');
 });
 	</script>
