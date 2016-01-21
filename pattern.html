@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="o0v0o : ">
+      
+    <title>o0v0o</title>
+
+  </head>
+
+  <body>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" style="width:100%;height:100%">
+		<canvas id="Canvas" style="width:100%;height:100%"></canvas>
+    </div>
+
+
+	<script type="text/javascript" src="gl-matrix-min.js"></script>
+	<script type="text/javascript">
+jsArray = function(table){
+	var array = [];
+	var i=1;
+	while(typeof (table.get(i)) !== 'undefined'){
+		array[i-1] = table.get(i);
+		i=i+1;
+	}
+	return array;
+}
+jsFloat32Array = function(table){
+	var array = jsArray(table);
+	var floatArray = new Float32Array(array);
+	return floatArray
+}
+	</script>
+	<script src="lua.vm.js"></script>
+	<script type="text/lua">
+		 require'test'
+	</script>
+	
+  </body>
+</html>
