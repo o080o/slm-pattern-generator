@@ -46,3 +46,8 @@ function drawShape(verts)
 end
 local quad = makeQuad()
 drawShape(quad)
+
+-- setup resize handler
+js.global:getElementById("Canvas"):addEventListener("resize", function()
+print("canvas resized")
+end)
