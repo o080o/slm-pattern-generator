@@ -49,5 +49,12 @@ drawShape(quad)
 
 -- setup resize handler
 js.global:getElementById("Canvas"):addEventListener("resize", function()
-print("canvas resized")
+print("canvas resized from Lua!")
 end)
+-- setup a resize handler setup from js
+gl.resize = function()
+	print("canvas resized from JS handler...")
+	local canvas = js.global:getElementById("Canvas")
+	gl.viewportWidth = canvas.width
+	gl.viewportHeight = canvas.heigt
+end

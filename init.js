@@ -7,7 +7,7 @@ var sharedObj = {} //this object will be shared with the pattern window when we 
 var canvas = document.getElementById("Canvas");
 openBtn.addEventListener('click', function () {
 	patternWindow = window.open("pattern.html", "?", "height=200,width=200");
-    patternWindow.parameters = sharedObj; //share our object!
+	patternWindow.parameters = sharedObj; //share our object!
 }, false);
 
 fullscreenBtn.addEventListener("click", function () {
