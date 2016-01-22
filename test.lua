@@ -62,8 +62,8 @@ gl.resize = function()
 	local rect = canvas:getClientRects()[0] --gets the size of the *window*
 	--local container = js.global.document:getElementById("canvas-container")
 	print("resize event thrown!", canvas.width, rect.width, rect.height)
-	canvas.width = rect.width
-	canvas.height = rect.height
+	canvas.width = 1920 or rect.width
+	canvas.height = 1080 or rect.height
 	gl.viewport(0, 0, canvas.width, canvas.height)
 	print(canvas.width, canvas.height)
 	drawShape(quad)
