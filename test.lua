@@ -27,7 +27,6 @@ function setUniforms()
 	setUniformFloat(program, "array_pitch", parameters.hlens.pitch)
 	-- global parameters
 	setUniformFloat(program, "wavelength", parameters.laser.wavelength*0.000001) --calculation done in mm
-	setUniformFloat(program, "uscale", parameters.laser.uscale)
 end
 function makeQuad()
 	local verts = {
