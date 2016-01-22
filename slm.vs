@@ -16,7 +16,7 @@ varying vec2 arrayDistance;
 #define sheight yres*pixel_pitch
 
 void main(void) {
-	lensDistance = vec2(position.x*swidth, position.y*sheight) - vec2(lens_xoffset, lens_yoffset);
-	arrayDistance = vec2(position.x*swidth, position.y*sheight) - vec2(lens_xoffset+array_xoffset, lens_yoffset);
+	lensDistance = vec2(position.x*swidth, position.y*sheight) - vec2(lens_xoffset, lens_yoffset)/2.0;
+	arrayDistance = vec2(position.x*swidth, position.y*sheight) - vec2(lens_xoffset+array_xoffset, lens_yoffset)/2.0;
 	gl_Position = vec4(position, 1.0);
 }
