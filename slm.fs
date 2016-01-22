@@ -24,7 +24,7 @@ void main(void) {
 	float arrayDistanceX = abs(arrayDistance.x) - (float(nPitch) * array_pitch); //offset the distance so that this lens segment is situated about the origin (note the abs() does not change anything)
 	float darray = (arrayDistanceX*arrayDistanceX) / (2.0*array_radius);
 
-	float height = mod(darray + dlens, wavelength) / wavelength;
+	float height = mod(darray + dlens + dlens_vert, wavelength) / wavelength;
 	//height = darray + dlens + dlens_vert;
 
 
