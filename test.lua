@@ -17,12 +17,16 @@ function setUniforms()
 	setUniformMatrix4(program, "pMatrix", pMatrix)
 	setUniformMatrix4(program, "mvMatrix", mvMatrix)
 	-- lens parameters
-	setUniformFloat(program, "hlens_radius", parameters.hlens.radius)
 	setUniformFloat(program, "vlens_radius", parameters.vlens.radius)
+	setUniformFloat(program, "hlens_radius", parameters.hlens.radius)
+	setUniformFloat(program, "lens_xoffset", parameters.hlens.lens_offset)
+	setUniformFloat(program, "lens_yoffset", 0)
+
 	setUniformFloat(program, "array_radius", parameters.hlens.array_radius)
+	setUniformFloat(program, "array_xoffset", parameters.hlens.array_offset)
 	setUniformFloat(program, "array_pitch", parameters.hlens.pitch)
 	-- global parameters
-	setUniformFloat(program, "wavelength", parameters.laser.wavelength)
+	setUniformFloat(program, "wavelength", parameters.laser.wavelength*0.000001) --calculation done in mm
 end
 function makeQuad()
 	local verts = {
