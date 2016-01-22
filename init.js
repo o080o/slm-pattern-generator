@@ -5,13 +5,11 @@ var fullscreenBtn = document.getElementById('fullscreen');
 var patternWindow
 var sharedObj = {} //this object will be shared with the pattern window when we make it
 var canvas = document.getElementById("Canvas");
-openBtn.addEventListener('click', function () {
-	patternWindow = window.open("pattern.html", "?", "height=200,width=200");
-	patternWindow.parameters = sharedObj; //share our object!
-}, false);
+
 
 fullscreenBtn.addEventListener("click", function () {
 	if (!patternWindow) {return}
+	console.log("going fullscreen...")
 	var docElm = patternWindow.document.getElementById("Canvas");
 	if(!docElm){return}
 
@@ -32,24 +30,29 @@ function fullscreenChange(){
 	console.log("fullscreen change!");
 	console.log(fullscreen);
 }
-document.addEventListener("fullscreenchange", function () {
-	fullscreen = document.fullscreenElement;
-	fullscreenChange();
-}, false);
+openBtn.addEventListener('click', function () {
+	patternWindow = window.open("pattern.html", "?", "height=200,width=200");
+	patternWindow.parameters = sharedObj; //share our object!
+	//register callbacks in this new window... maybe??
+	patternWindow.document.addEventListener("fullscreenchange", function () {
+		fullscreen = patternWindow.document.fullscreenElement;
+		fullscreenChange();
+	}, false);
 
-document.addEventListener("msfullscreenchange", function () {
-	fullscreen = document.msFullScreenElement;
-	fullscreenChange();
-}, false);
+	patternWindow.document.addEventListener("msfullscreenchange", function () {
+		fullscreen = patternWindow.document.msFullScreenElement;
+		fullscreenChange();
+	}, false);
 
-document.addEventListener("mozfullscreenchange", function () {
-	fullscreen = document.mozFullScreen;
-	fullscreenChange();
-}, false);
+	patternWindow.document.addEventListener("mozfullscreenchange", function () {
+		fullscreen = patternWindow.document.mozFullScreen;
+		fullscreenChange();
+	}, false);
 
-document.addEventListener("webkitfullscreenchange", function () {
-	fullscreen = document.webkitIsFullScreen;
-	fullscreenChange();
+	patternWindow.document.addEventListener("webkitfullscreenchange", function () {
+		fullscreen = patternWindow.document.webkitIsFullScreen;
+		fullscreenChange();
+	}, false);
 }, false);
 // now register even handlers to all the inputs
 function registerParam(container, elem) {
@@ -60,8 +63,10 @@ function registerParam(container, elem) {
     
     elem.addEventListener("change", function () {
         container[name] = Number(elem.value)
-        sharedObj.changed = true; //indicate that the parameters have changed
         console.log(sharedObj)
+		if(patternWindow){
+			patternWindow.L.execute('gl.redraw();gl.finish()')
+		}
     })
 }
 var elems = document.getElementsByTagName('*');
