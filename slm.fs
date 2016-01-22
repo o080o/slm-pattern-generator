@@ -11,6 +11,8 @@ uniform float wavelength;
 varying vec2 lensDistance; //distance in micrometers from the center of the lens! (includes lens offset)
 varying vec2 arrayDistance; //distance in micrometers from the center of the (array) lens! (includes lens+array offset)
 
+varying vec4 heightOffset;
+
 
 
 void main(void) {
@@ -24,11 +26,11 @@ void main(void) {
 	float arrayDistanceX = abs(arrayDistance.x) - (float(nPitch) * array_pitch); //offset the distance so that this lens segment is situated about the origin (note the abs() does not change anything)
 	float darray = (arrayDistanceX*arrayDistanceX) / (2.0*array_radius);
 
-	float height = mod(darray + dlens + dlens_vert, wavelength) / wavelength;
+	float height = mod(darray + dlens + dlens_vert + heightOffset.w, wavelength) / wavelength;
 	//height = darray + dlens + dlens_vert;
 
 
-	gl_FragColor = vec4(1.0-height, 1.0-height, 1.0-height, 1.0);
+	gl_FragColor = vec4(height, height, height, 1.0);
 }
 
 
