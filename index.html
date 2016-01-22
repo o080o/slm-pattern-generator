@@ -4,9 +4,9 @@
   <head>
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="o0v0o : ">
+    <meta name="description" content="O0v0o : ">
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheet.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
     <title>o0v0o</title>
 
@@ -14,37 +14,58 @@
 
   <body>
 
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/o0V0o">View on GitHub</a>
+
+          <h1 id="project_title">o0v0o</h1>
+          <h2 id="project_tagline"></h2>
+
+        </header>
+    </div>
+
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
-		<div class="button" id="open">Open Window</div>
-		<div class="button" id="fullscreen">Fullscreen</div>
-        <div class="container" name="laser">
-            <div class="parameter">
-                Wavelength:
-                <input name="wavelength" value="120">
-            </div>
-        </div>
-        <div class="container" name="hlens">
-            <div class="parameter">
-                Lens RadiusZz:
-                <input name="radius" value="100">
-            </div>
-            <div class="parameter">
-                Array Radius:
-                <input name="aradius" value="1.2">
-            </div>
-            <div class="parameter">
-                Array Pitch:
-                <input name="aradius" value="1.2">
-            </div>
-        </div>
-        <div class="container" name="vlens">
-            <div class="parameter">
-                Lens Radius (vertical):
-                <input name="radius" value="5.2">
-            </div>
-        </div>
+      <section id="main_content" class="inner">
+        <h3>
+<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome!</h3>
+		<canvas id="Canvas" width="300" height="150"></canvas>
+		canvas element ^
+      </section>
     </div>
-    <script src="init.js"></script>
+
+
+	<script type="text/javascript" src="gl-matrix-min.js"></script>
+	<script type="text/javascript">
+jsArray = function(table){
+	var array = [];
+	var i=1;
+	while(typeof (table.get(i)) !== 'undefined'){
+		array[i-1] = table.get(i);
+		i=i+1;
+	}
+	return array;
+}
+jsFloat32Array = function(table){
+	var array = jsArray(table);
+	var floatArray = new Float32Array(array);
+	return floatArray
+}
+	</script>
+	<script src="/javascripts/lua.vm.js"></script>
+	<script type="text/lua">
+		 require'test'
+	</script>
+	
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
   </body>
 </html>
