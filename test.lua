@@ -10,13 +10,19 @@ local fsrc = get("slm.fs")
 local program = S.loadShaders(vsrc, fsrc)
 local mvMatrix, pMatrix = mat4(), mat4()
 gl.useProgram(program)
-gl.enableVertexAttribArray( gl.getAttribLocation(program, "aVertexPosition"))
+gl.enableVertexAttribArray( gl.getAttribLocation(program, "position"))
 local parameters = js.global.parameters
 --more higher level util functions
 function setUniforms()
-	setUniformMatrix4(program, "uPMatrix", pMatrix)
-	setUniformMatrix4(program, "uMVMatrix", mvMatrix)
-	setUniformFloat(program, "red", parameters.hlens.radius)
+	setUniformMatrix4(program, "pMatrix", pMatrix)
+	setUniformMatrix4(program, "mvMatrix", mvMatrix)
+	-- lens parameters
+	setUniformFloat(program, "hlens_radius", parameters.hlens.radius)
+	setUniformFloat(program, "vlens_radius", parameters.vlens.radius)
+	setUniformFloat(program, "array_radius", parameters.hlens.array_radius)
+	setUniformFloat(program, "array_pitch", parameters.hlens.pitch)
+	-- global parameters
+	setUniformFloat(program, "wavelength", parameters.laser.wavelength)
 end
 function makeQuad()
 	local verts = {
@@ -33,28 +39,31 @@ function makeQuad()
 	return quadVerts
 end
 function drawShape(verts)
-	gl.viewport(0, 0, gl.viewportWidth, gl.viewportHeight)
 	gl.clear(gl.COLOR_BUFFER_BIT + gl.DEPTH_BUFFER_BIT)
 
 	js.global.mat4:identity(mvMatrix)
 	js.global.mat4:identity(pMatrix)
 	
 	gl.bindBuffer(gl.ARRAY_BUFFER, verts)
-	gl.vertexAttribPointer(gl.getAttribLocation(program, "aVertexPosition"), verts.size, gl.FLOAT, false, 0, 0)
+	gl.vertexAttribPointer(gl.getAttribLocation(program, "position"), verts.size, gl.FLOAT, false, 0, 0)
 	setUniforms()
 	gl.drawArrays(gl.TRIANGLE_STRIP, 0, verts.n)
 end
 local quad = makeQuad()
 drawShape(quad)
 
--- setup resize handler
-js.global.document:getElementById("Canvas"):addEventListener("resize", function()
-print("canvas resized from Lua!")
-end)
 -- setup a resize handler setup from js
 gl.resize = function()
-	print("canvas resized from JS handler...")
 	local canvas = js.global.document:getElementById("Canvas")
-	gl.viewportWidth = canvas.width
-	gl.viewportHeight = canvas.heigt
+	local rect = canvas:getClientRects()[0] --gets the size of the *window*
+	--local container = js.global.document:getElementById("canvas-container")
+	print("resize event thrown!", canvas.width, rect.width, rect.height)
+	canvas.width = rect.width
+	canvas.height = rect.height
+	gl.viewport(0, 0, canvas.width, canvas.height)
+	print(canvas.width, canvas.height)
+	drawShape(quad)
+end
+gl.redraw = function()
+	drawShape(quad)
 end
