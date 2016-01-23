@@ -1,6 +1,7 @@
 //This code adds all the event listeners we need
 var fullscreen = false;
 var openBtn = document.getElementById('open');
+var closeBtn = document.getElementById('close');
 var fullscreenBtn = document.getElementById('fullscreen');
 var patternWindow
 var sharedObj = {} //this object will be shared with the pattern window when we make it
@@ -25,12 +26,16 @@ fullscreenBtn.addEventListener("click", function () {
 	else if (document.webkitCancelFullScreen) { document.webkitCancelFullScreen(); }
 	}
 }, false)
+closeBtn.addEventListener("click", function() {
+	if (patternWindow) {patternWindow.close()}
+}, false)
 
 function fullscreenChange(){
 	console.log("fullscreen change!");
 	console.log(fullscreen);
 }
 openBtn.addEventListener('click', function () {
+	if (patternWindow && patternWindow.URL) {alert("Pattern window is already open");return}
 	patternWindow = window.open("pattern.html", "?", "height=200,width=200");
 	patternWindow.parameters = sharedObj; //share our object!
 	//register callbacks in this new window... maybe??
@@ -57,13 +62,11 @@ openBtn.addEventListener('click', function () {
 // now register even handlers to all the inputs
 function registerParam(container, elem) {
     var name=inputElem.getAttribute('name');
-    console.log("registered:")
-    console.log(name)
     container[name] = Number(elem.value)
     
     elem.addEventListener("change", function () {
         container[name] = Number(elem.value)
-		colsole.log("shared Object:")
+		colsole.log("param changed!  shared Object:")
         console.log(sharedObj)
 		if(patternWindow){
 			patternWindow.parameters = sharedObj //make sure the window has the parameters object
