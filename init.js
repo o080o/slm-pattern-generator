@@ -63,8 +63,10 @@ function registerParam(container, elem) {
     
     elem.addEventListener("change", function () {
         container[name] = Number(elem.value)
+		colsole.log("shared Object:")
         console.log(sharedObj)
 		if(patternWindow){
+			patternWindow.parameters = sharedObj //make sure the window has the parameters object
 			patternWindow.L.execute('gl.redraw();gl.finish()')
 		}
     })

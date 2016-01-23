@@ -11,9 +11,9 @@ local program = S.loadShaders(vsrc, fsrc)
 local mvMatrix, pMatrix = mat4(), mat4()
 gl.useProgram(program)
 gl.enableVertexAttribArray( gl.getAttribLocation(program, "position"))
-local parameters = js.global.parameters
 --more higher level util functions
 function setUniforms()
+	local parameters = js.global.parameters
 	setUniformMatrix4(program, "pMatrix", pMatrix)
 	setUniformMatrix4(program, "mvMatrix", mvMatrix)
 	-- lens parameters
@@ -53,9 +53,8 @@ function drawShape(verts)
 	setUniforms()
 	gl.drawArrays(gl.TRIANGLE_STRIP, 0, verts.n)
 end
-local quad = makeQuad()
-drawShape(quad)
 
+local quad
 -- setup a resize handler setup from js
 gl.resize = function()
 	local canvas = js.global.document:getElementById("Canvas")
@@ -71,3 +70,5 @@ end
 gl.redraw = function()
 	drawShape(quad)
 end
+quad = makeQuad()
+drawShape(quad)
