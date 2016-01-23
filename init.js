@@ -66,7 +66,7 @@ function registerParam(container, elem) {
     
     elem.addEventListener("change", function () {
         container[name] = Number(elem.value)
-		colsole.log("param changed!  shared Object:")
+		console.log("param changed!  shared Object:")
         console.log(sharedObj)
 		if(patternWindow){
 			patternWindow.parameters = sharedObj //make sure the window has the parameters object

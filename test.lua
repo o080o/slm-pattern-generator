@@ -20,7 +20,7 @@ function setUniforms()
 	setUniformFloat(program, "vlens_radius", parameters.vlens.radius)
 	setUniformFloat(program, "hlens_radius", parameters.hlens.radius)
 	setUniformFloat(program, "lens_xoffset", parameters.hlens.lens_offset)
-	setUniformFloat(program, "lens_yoffset", 0)
+	setUniformFloat(program, "lens_yoffset", parameters.vlens.lens_offset)
 
 	setUniformFloat(program, "array_radius", parameters.hlens.array_radius)
 	setUniformFloat(program, "array_xoffset", parameters.hlens.array_offset)
