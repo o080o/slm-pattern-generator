@@ -1,6 +1,8 @@
 return function(canvas)
+	print("viola!")
 	if type(canvas) == "string" then
 		canvas = js.global.document:getElementById(canvas)
+		if not canvas then error("can not find canvas element:"..canvas) end
 	end
 
 	local glObj = canvas:getContext("webgl") or canvas:getContext("experimental-webgl")

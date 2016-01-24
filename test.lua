@@ -1,6 +1,10 @@
 local get = require("get")
 local S = require("shaders")
-gl = require("webglContext")("Canvas")
+print("hmm")
+gl = require("webglContext")
+print(gl)
+gl = require("webglContext")("Canvas") or {}
+
 glutil = require("webglUtil")
 local vec3, mat4, Float32Array, setUniformMatrix4, setUniformFloat = glutil.vec3, glutil.mat4, glutil.Float32Array, glutil.setUniformMatrix4, glutil.setUniformFloat
 
@@ -66,8 +70,10 @@ gl.resize = function()
 	local canvas = js.global.document:getElementById("Canvas")
 	print("resize event thrown!")
 	print(canvas.clientWidth, canvas.clientHeight)
-	--gl.viewport(0, 0, 1920,1080)
-	gl.viewport(0, 0, canvas.clientWidth, canvas.clientHeight)
+	canvas.width = canvas.clientWidth
+	canvas.height = canvas.clientHeight
+	gl.viewport(0, 0, canvas.width, canvas.height)
+	--gl.viewport(0, 0, canvas.clientWidth, canvas.clientHeight)
 	drawShape(quad)
 end
 gl.redraw = function()
