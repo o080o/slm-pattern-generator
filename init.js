@@ -14,17 +14,17 @@ fullscreenBtn.addEventListener("click", function () {
 	var docElm = patternWindow.document.getElementById("Canvas");
 	if(!docElm){return}
 
-	if(!fullscreen){
+	//if(!fullscreen){
 	if (docElm.requestFullscreen) { docElm.requestFullscreen(); }
 	else if (docElm.msRequestFullscreen) { docElm.msRequestFullscreen(); }
-	else if (docElm.mozRequestFullScreen) { docElm.mozRequestFullScreen(); }
+	else if (docElm.mozRequestFullScreen) {console.log("mozFs");docElm.mozRequestFullScreen(); }
 	else if (docElm.webkitRequestFullScreen) { docElm.webkitRequestFullScreen(); }
-	}else{
-	if (document.exitFullscreen) { document.exitFullscreen(); }
-	else if (document.msExitFullscreen) { document.msExitFullscreen(); }
-	else if (document.mozCancelFullScreen) { document.mozCancelFullScreen(); }
-	else if (document.webkitCancelFullScreen) { document.webkitCancelFullScreen(); }
-	}
+	//}else{
+	//if (document.exitFullscreen) { document.exitFullscreen(); }
+	//else if (document.msExitFullscreen) { document.msExitFullscreen(); }
+	//else if (document.mozCancelFullScreen) { document.mozCancelFullScreen(); }
+	//else if (document.webkitCancelFullScreen) { document.webkitCancelFullScreen(); }
+	//}
 }, false)
 closeBtn.addEventListener("click", function() {
 	if (patternWindow) {patternWindow.close()}
