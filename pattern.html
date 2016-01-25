@@ -56,6 +56,12 @@
 		document.addEventListener("msfullscreenchange", function(){fullscreenChange();}, false);
 		document.addEventListener("mozfullscreenchange", function(){fullscreenChange();}, false);
 		document.addEventListener("webkitfullscreenchange", function(){fullscreenChange();}, false);
+		canvas.addEventListener("click", function() {
+			if (canvas.requestFullscreen) {canvas.requestFullscreen();}
+			else if (canvas.msRequestFullscreen) {canvas.msRequestFullscreen();}
+			else if (canvas.mozRequestFullScreen) { canvas.mozRequestFullScreen();}
+			else if (canvas.webkitRequestFullScreen) { canvas.webkitRequestFullScreen();}
+		}, false);
 	</script>
 	
   </body>
