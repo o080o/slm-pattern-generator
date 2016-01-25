@@ -4,7 +4,7 @@ gl = require("webglContext")("Canvas")
 glutil = require("webglUtil")
 local vec3, mat4, Float32Array, setUniformMatrix4, setUniformFloat = glutil.vec3, glutil.mat4, glutil.Float32Array, glutil.setUniformMatrix4, glutil.setUniformFloat
 
---gl.disable(gl.DEPTH_TEST)
+gl.disable(gl.DEPTH_TEST)
 --gl.depthFunc(gl.LEQUAL)
 gl.clearColor(1,0,0,1)
 gl.clear(gl.COLOR_BUFFER_BIT + gl.DEPTH_BUFFER_BIT)
@@ -55,9 +55,9 @@ function drawShape(verts)
 	gl.bindBuffer(gl.ARRAY_BUFFER, verts)
 	gl.vertexAttribPointer(gl.getAttribLocation(program, "position"), verts.size, gl.FLOAT, false, 0, 0)
 	setUniforms()
-	gl.clear(gl.COLOR_BUFFER_BIT + gl.DEPTH_BUFFER_BIT)
-	gl.drawArrays(gl.TRIANGLE_STRIP, 0, verts.n)
-	--js.global:jsTestDraw(gl.context)
+	--gl.clear(gl.COLOR_BUFFER_BIT + gl.DEPTH_BUFFER_BIT)
+	--gl.drawArrays(gl.TRIANGLE_STRIP, 0, verts.n)
+	js.global:jsTestDraw(gl.context)
 end
 
 local quad
@@ -66,8 +66,7 @@ gl.resize = function()
 	local canvas = js.global.document:getElementById("Canvas")
 	print("resize event thrown!")
 	print(canvas.clientWidth, canvas.clientHeight)
-	gl.viewport(0, 0, 1920,1080)
-	--gl.viewport(0, 0, canvas.clientWidth, canvas.clientHeight)
+	gl.viewport(0, 0, canvas.clientWidth, canvas.clientHeight)
 	drawShape(quad)
 end
 gl.redraw = function()
