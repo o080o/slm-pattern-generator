@@ -11,8 +11,9 @@ var canvas = document.getElementById("Canvas");
 fullscreenBtn.addEventListener("click", function () {
 	if (!patternWindow) {return}
 	console.log("going fullscreen...")
+	console.log(patternWindow)
 	var docElm = patternWindow.document.getElementById("Canvas");
-	if(!docElm){return}
+	if(!docElm){console.log("can't find canvas");return}
 
 	//if(!fullscreen){
 	if (docElm.requestFullscreen) { docElm.requestFullscreen(); }
