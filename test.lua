@@ -4,8 +4,8 @@ gl = require("webglContext")("Canvas")
 glutil = require("webglUtil")
 local vec3, mat4, Float32Array, setUniformMatrix4, setUniformFloat = glutil.vec3, glutil.mat4, glutil.Float32Array, glutil.setUniformMatrix4, glutil.setUniformFloat
 
-gl.enable(gl.DEPTH_TEST)
-gl.depthFunc(gl.LEQUAL)
+gl.disable(gl.DEPTH_TEST)
+--gl.depthFunc(gl.LEQUAL)
 gl.clearColor(0,0,1,1)
 gl.clear(gl.COLOR_BUFFER_BIT + gl.DEPTH_BUFFER_BIT)
 
@@ -69,7 +69,7 @@ gl.resize = function()
 	print("resize event thrown!", canvas.width, rect.width, rect.height)
 	canvas.width = 1920 or rect.width
 	canvas.height = 1080 or rect.height
-	gl.viewport(0, 0, canvas.width, canvas.height)
+	gl.viewport(0, 0, 1920, 1080)
 	print(canvas.clientWidth, canvas.clientHeight)
 	drawShape(quad)
 end
