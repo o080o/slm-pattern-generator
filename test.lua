@@ -64,8 +64,8 @@ gl.resize = function()
 	print("resize event thrown!", canvas.width, rect.width, rect.height)
 	canvas.width = 1920 or rect.width
 	canvas.height = 1080 or rect.height
-	--gl.viewport(0, 0, canvas.width, canvas.height)
-	print(canvas.clientWidth, canvas.clientHeight)
+	gl.viewport(0, 0, canvas.width, canvas.height)
+	print(canvas.width, canvas.height)
 	drawShape(quad)
 end
 gl.redraw = function()
