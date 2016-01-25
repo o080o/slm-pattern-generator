@@ -66,14 +66,13 @@ end
 
 local quad
 -- setup a resize handler setup from js
-gl.resize = function()
+gl.resize = function(width, height)
 	local canvas = js.global.document:getElementById("Canvas")
 	print("resize event thrown!")
 	print(canvas.clientWidth, canvas.clientHeight)
-	canvas.width = canvas.clientWidth
-	canvas.height = canvas.clientHeight
+	canvas.width = width or canvas.clientWidth
+	canvas.height = height or canvas.clientHeight
 	gl.viewport(0, 0, canvas.width, canvas.height)
-	--gl.viewport(0, 0, canvas.clientWidth, canvas.clientHeight)
 	drawShape(quad)
 end
 gl.redraw = function()
