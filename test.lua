@@ -43,7 +43,6 @@ function makeQuad()
 	return quadVerts
 end
 function drawShape(verts)
-	gl.clear(gl.COLOR_BUFFER_BIT + gl.DEPTH_BUFFER_BIT)
 
 	js.global.mat4:identity(mvMatrix)
 	js.global.mat4:identity(pMatrix)
@@ -51,7 +50,9 @@ function drawShape(verts)
 	gl.bindBuffer(gl.ARRAY_BUFFER, verts)
 	gl.vertexAttribPointer(gl.getAttribLocation(program, "position"), verts.size, gl.FLOAT, false, 0, 0)
 	setUniforms()
-	gl.drawArrays(gl.TRIANGLE_STRIP, 0, verts.n)
+	--gl.clear(gl.COLOR_BUFFER_BIT + gl.DEPTH_BUFFER_BIT)
+	--gl.drawArrays(gl.TRIANGLE_STRIP, 0, verts.n)
+	js.global:jsTestDraw(gl.context)
 end
 
 local quad

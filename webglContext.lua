@@ -5,8 +5,6 @@ return function(canvas)
 
 	local glObj = canvas:getContext("webgl") or canvas:getContext("experimental-webgl")
 
-	glObj.viewportWidth = canvas.width
-	glObj.viewportHeight = canvas.height
 	-- make a thin proxy table for the gl object to abstract some things away,
 	-- like using ":" for all the js calls. we will just wrap a function around
 	-- them...
