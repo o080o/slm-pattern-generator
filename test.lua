@@ -7,7 +7,7 @@ local vec3, mat4, Float32Array, setUniformMatrix4, setUniformFloat = glutil.vec3
 gl.enable(gl.DEPTH_TEST)
 gl.depthFunc(gl.LEQUAL)
 gl.clearColor(0,0,1,1)
-gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
+gl.clear(gl.COLOR_BUFFER_BIT + gl.DEPTH_BUFFER_BIT)
 
 local vsrc = get("slm.vs") --sync. get request
 local fsrc = get("slm.fs")
