@@ -45,7 +45,8 @@
 	</script>
 	<script type="text/javascript">
 		var canvas = document.getElementById("Canvas");
-		function jsRender(gl){
+		function jsRender(){
+			console.log(gl)
 			canvas.width = canvas.clientWidth
 			canvas.height = canvas.clientHeight
 			gl.viewport(0,0,canvas.width, canvas.height)
