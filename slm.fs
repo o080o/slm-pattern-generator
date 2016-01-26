@@ -37,7 +37,7 @@ void main(void) {
 	//height = darray + dlens + dlens_vert;
 
 
-	gl_FragColor = vec4(height, height, 0.25, 1.0);
+	gl_FragColor = vec4(height, height, height, 1.0);
 }
 
 
