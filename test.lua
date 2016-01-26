@@ -24,8 +24,8 @@ function setUniforms()
 	local parameters = js.global.parameters
 	print("settting uniforms", parameters, parameters.vlens.radius)
 	-- lens parameters
-	setUniformFloat(program, "vlens_radius", parameters.vlens.radius)
 	setUniformFloat(program, "hlens_radius", parameters.hlens.radius)
+	setUniformFloat(program, "vlens_radius", parameters.vlens.radius)
 	setUniformFloat(program, "lens_xoffset", parameters.hlens.lens_offset)
 	setUniformFloat(program, "lens_yoffset", parameters.vlens.lens_offset)
 
