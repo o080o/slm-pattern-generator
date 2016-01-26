@@ -2,13 +2,13 @@ precision highp float;
 
 attribute vec3 position;
 
-//uniform float lens_xoffset;
-//uniform float lens_yoffset;
-//uniform float array_xoffset;
+uniform float lens_xoffset;
+uniform float lens_yoffset;
+uniform float array_xoffset;
 
-//uniform float vlens_radius;
-//uniform float hlens_radius;
-//uniform float array_radius;
+uniform float vlens_radius;
+uniform float hlens_radius;
+uniform float array_radius;
 
 varying vec2 lensDistance;
 varying vec2 arrayDistance;
@@ -19,13 +19,13 @@ varying vec4 heightOffset;
 #define xres 1920.0
 #define yres 1080.0
 
-float lens_xoffset = 0.0;
-float lens_yoffset = 0.0;
-float array_xoffset = 0.0;
+//float lens_xoffset = 0.0;
+//float lens_yoffset = 0.0;
+//float array_xoffset = 0.0;
 
-float vlens_radius = 500.0;
-float hlens_radius = 100.0;
-float array_radius = 50.0;
+//float vlens_radius = 500.0;
+//float hlens_radius = 100.0;
+//float array_radius = 50.0;
 
 void main(void) {
 	vec2 sdim = vec2(xres, yres)*pixel_pitch*0.5;
