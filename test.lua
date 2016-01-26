@@ -22,6 +22,8 @@ gl.enableVertexAttribArray( gl.getAttribLocation(program, "position"))
 --more higher level util functions
 function setUniforms()
 	local parameters = js.global.parameters
+	console.log("setting uniforms")
+	console.log(parameters)
 	setUniformMatrix4(program, "pMatrix", pMatrix)
 	setUniformMatrix4(program, "mvMatrix", mvMatrix)
 	-- lens parameters
@@ -73,6 +75,9 @@ gl.resize = function(width, height)
 	canvas.height = height or canvas.clientHeight
 	gl.viewport(0, 0, canvas.width, canvas.height)
 	drawShape(quad)
+end
+gl.resize = function(width, height)
+	js.global.requestAnimationFrame(js.global.jsRender)
 end
 gl.redraw = function()
 	drawShape(quad)

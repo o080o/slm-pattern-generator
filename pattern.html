@@ -45,6 +45,12 @@
 	</script>
 	<script type="text/javascript">
 		var canvas = document.getElementById("Canvas");
+		function jsRender(gl){
+			canvas.width = canvas.clientWidth
+			canvas.height = canvas.clientHeight
+			gl.viewport(0,0,canvas.width, canvas.height)
+			L.execute("gl.redraw()")
+		}
 		function fullscreenChange(){
 			console.log("went fullscreen!");
 			L.execute('gl.resize()');
