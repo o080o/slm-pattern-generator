@@ -6,7 +6,7 @@ uniform float lens_xoffset;
 uniform float lens_yoffset;
 uniform float array_xoffset;
 
-uniform float vlens_radius;
+//uniform float vlens_radius;
 uniform float hlens_radius;
 uniform float array_radius;
 
@@ -23,7 +23,7 @@ varying vec4 heightOffset;
 //float lens_yoffset = 0.0;
 //float array_xoffset = 0.0;
 
-//float vlens_radius = 500.0;
+float vlens_radius = 500.0;
 //float hlens_radius = 100.0;
 //float array_radius = 50.0;
 
