@@ -8,10 +8,9 @@ gl = require("webglContext")("Canvas") or {}
 glutil = require("webglUtil")
 local vec3, mat4, Float32Array, setUniformMatrix4, setUniformFloat = glutil.vec3, glutil.mat4, glutil.Float32Array, glutil.setUniformMatrix4, glutil.setUniformFloat
 
---gl.disable(gl.DEPTH_TEST)
+gl.disable(gl.DEPTH_TEST)
 --gl.depthFunc(gl.LEQUAL)
---gl.clearColor(1,0,0,1)
---gl.clear(gl.COLOR_BUFFER_BIT + gl.DEPTH_BUFFER_BIT)
+gl.clearColor(1,0,0,1)
 
 local vsrc = get("slm.vs") --sync. get request
 local fsrc = get("slm.fs")
