@@ -76,7 +76,7 @@ gl.resize = function(width, height)
 	drawShape(quad)
 end
 gl.resize = function(width, height)
-	js.global.requestAnimationFrame(js.global.jsRender)
+	js.global:requestAnimationFrame(js.global.jsRender)
 end
 gl.redraw = function()
 	drawShape(quad)
