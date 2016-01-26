@@ -23,8 +23,6 @@ gl.enableVertexAttribArray( gl.getAttribLocation(program, "position"))
 function setUniforms()
 	local parameters = js.global.parameters
 	print("settting uniforms", parameters, parameters.vlens.radius)
-	setUniformMatrix4(program, "pMatrix", pMatrix)
-	setUniformMatrix4(program, "mvMatrix", mvMatrix)
 	-- lens parameters
 	setUniformFloat(program, "vlens_radius", parameters.vlens.radius)
 	setUniformFloat(program, "hlens_radius", parameters.hlens.radius)
