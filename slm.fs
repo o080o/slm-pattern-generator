@@ -2,14 +2,14 @@ precision highp float;
 precision highp int;
 
 //uniform float vlens_radius;
-//uniform float hlens_radius;
+uniform float hlens_radius;
 uniform float array_radius;
 uniform float array_pitch;
 
 uniform float wavelength;
 
 float vlens_radius = 500.0;
-float hlens_radius = 100.0;
+//float hlens_radius = 100.0;
 //float array_radius = 50.0;
 //float array_pitch = 1.4;
 
@@ -37,7 +37,7 @@ void main(void) {
 	//height = darray + dlens + dlens_vert;
 
 
-	gl_FragColor = vec4(height, height, 0.5, 1.0);
+	gl_FragColor = vec4(height-0.25, height, 0.75, 1.0);
 }
 
 
